@@ -110,7 +110,7 @@ def build_return_value(with_server_list, responses, server_list):
     :param server_list: The server list
     :return: A list of responses without the empty ones, plus possibly a server list
     """
-    non_empty_responses = filter((lambda text: text), responses)
+    non_empty_responses = list(filter((lambda text: text), responses))
 
     if with_server_list:
         return non_empty_responses, server_list

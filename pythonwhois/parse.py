@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import copy
 import csv
 import datetime
@@ -698,7 +696,10 @@ else:
 
 
 def filter_characters(string, delete_characters):
-    return ''.join([char for char in string.encode('utf-8') if char not in delete_characters])
+    if type(string) is str:
+        return ''.join([char for char in string if char not in delete_characters])
+    else:
+        return ''.join([char for char in string.encode('utf-8') if char not in delete_characters])
 
 
 def parse_raw_whois(raw_data, normalized=None, never_query_handles=True, handle_server=""):
@@ -1217,11 +1218,14 @@ def is_country(word):
 
 
 def is_known_abbreviation(word):
-    return match_regexes(word, known_abbreviations.values())
+    return match_regexes(word, list(known_abbreviations.values()))
 
 
 def has_country(line, country):
-    return country in line.encode('utf-8').lower()
+    if type(line) is str:
+        return country in line.lower()
+    else:
+        return country in line.encode('utf-8').lower()
 
 
 def has_incorrect_known_abbreviation(line):

@@ -1,4 +1,7 @@
-import ConfigParser
+try:
+    import ConfigParser
+except ImportError:
+    import configparser as ConfigParser
 
 from pythonwhois.ratelimit.cool_down_tracker import CoolDownTracker
 

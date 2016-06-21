@@ -120,7 +120,7 @@ def build_return_value(with_server_list, responses, server_list, complete=True, 
     :param whois_server_available: Whether there was a WHOIS server available
     :return: A list of responses without the empty ones, plus possibly a server list
     """
-    non_empty_responses = filter((lambda text: text), responses)
+    non_empty_responses = list(filter((lambda text: text), responses))
 
     if with_server_list:
         return WhoisResult(non_empty_responses, complete, whois_server_available, server_list)

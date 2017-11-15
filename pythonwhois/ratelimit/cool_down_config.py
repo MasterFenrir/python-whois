@@ -1,4 +1,4 @@
-import ConfigParser
+import configparser
 
 from pythonwhois.ratelimit.cool_down_tracker import CoolDownTracker
 
@@ -32,7 +32,7 @@ class CoolDownConfig:
         :param path_to_file: The path to the configuration file
         :param default_cool_down: The default value for the cool down length, in case it is not defined in the config
         """
-        self.config = ConfigParser.ConfigParser()
+        self.config = configparser.ConfigParser()
         self.config.read(path_to_file)
 
         self.cool_down_length = default_cool_down

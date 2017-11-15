@@ -48,7 +48,7 @@ class CoolDown:
         Decrement all the cool downs with cool_down_time
         """
         time_diff = self.get_time_difference()
-        for server, cool_down_tracker in self.servers_on_cool_down.iteritems():
+        for server, cool_down_tracker in self.servers_on_cool_down.items():
             cool_down_tracker.decrement_cool_down(time_diff)
 
     def warn_limit_exceeded(self, whois_server):

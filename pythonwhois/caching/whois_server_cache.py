@@ -4,7 +4,8 @@ import os
 
 def read_cache(file_path):
     if os.path.isfile(file_path):
-        return ast.literal_eval(open(file_path).read())
+        with open(file_path) as f:
+            return ast.literal_eval(f.read())
     else:
         if os.path.dirname(file_path):
             os.makedirs(os.path.dirname(file_path))
@@ -12,8 +13,8 @@ def read_cache(file_path):
 
 
 def write_cache(cache, file_path):
-    cache_file = open(file_path, 'w')
-    cache_file.write(str(cache))
+    with open(file_path, 'w') as cache_file:
+        cache_file.write(str(cache))
 
 
 class WhoisServerCache:

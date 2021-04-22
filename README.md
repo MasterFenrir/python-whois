@@ -67,7 +67,7 @@ None of them are required. Multiple WHOIS servers can be added to the configurat
 	* Identifies names where the first and last name are swapped around, and fixes them
 	* Deduplicates names, even *across fields*, and even when they're not 100% identical
 	* Recognizes common (legal) abbreviations, and ensures that they are in the correct case
-* `pwhois`, a simple WHOIS tool using pythonwhois
+* `whois-oracle`, a simple WHOIS tool using pythonwhois
 	* Easily readable output format
 	* Can also output raw WHOIS data
 	* ... and JSON.
@@ -119,17 +119,17 @@ All commands are relative to the root directory of the repository.
 
 ### Adding new WHOIS data to the testing set
 
-	pwhois --raw thedomain.com > test/data/thedomain.com
+	whois-oracle --raw thedomain.com > test/data/thedomain.com
 	
 ### Checking the currently parsed data (while editing the parser)
 
-	./pwhois -f test/data/thedomain.com/ .
+	./whois-oracle -f test/data/thedomain.com/ .
 	
 (don't forget the dot at the end!)
 	
 ### Marking the current parsed data as correct for a domain
 
-Make sure to verify (using `pwhois` or otherwise) that the WHOIS data for the domain is being parsed correctly, before marking it as correct!
+Make sure to verify (using `whois-oracle` or otherwise) that the WHOIS data for the domain is being parsed correctly, before marking it as correct!
 
 	./test.py update thedomain.com
 	

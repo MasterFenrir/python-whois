@@ -15,14 +15,8 @@ import pythonwhois
 unicode_stdout = codecs.getwriter(sys.stdout.encoding)(sys.stdout)
 unicode_stderr = codecs.getwriter(sys.stderr.encoding)(sys.stderr)
 
-if sys.version_info < (3, 0):
-    def is_string(data):
-        """Test for string with support for python 2."""
-        return isinstance(data, basestring)
-else:
-    def is_string(data):
-        """Test for string with support for python 3."""
-        return isinstance(data, str)
+def is_string(data):
+    return isinstance(data, str)
 
 
 # FIXME: The testing script is currently incapable of testing referenced NIC handles that are
@@ -188,7 +182,6 @@ if args.mode[0] == "run":
                 target_data = json.loads(target_normalized)
             else:
                 target_data = json.loads(target_default)
-
             errors = recursive_compare(target_data, parsed, chain=["root"])
 
             if normalization == True:
@@ -213,7 +206,7 @@ if args.mode[0] == "run":
                 sys.stderr.write("Mode: %s\n" % mode)
                 sys.stderr.write("=======================================\n")
                 for error in errors:
-                    unicode_stderr.write(error + "\n")
+                    sys.stderr.write("%s\n" % error)
                 sys.stderr.write("=======================================\n")
                 sys.stderr.write(ENDC)
                 total_errors += len(errors)

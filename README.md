@@ -5,6 +5,10 @@ Because it is all knowing!
 A WHOIS retrieval and parsing library for Python, forked from pythonwhois
 and updated by me.
 
+STATUS at 2021-04-22: Ported to Python 3.7+ and it probably works.
+Most of (maybe all) the test data are very old and probably out of date
+so they don't guarantee that the parser works on current whois data.
+
 ## Dependencies
 
 None! All you need is the Python standard library.

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python -m unittest discover test_pythonwhois
+python3 -m unittest discover test_pythonwhois

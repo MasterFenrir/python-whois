@@ -234,7 +234,7 @@ grammar = {
 # Regex modification utilities
 def preprocess_regex(regex):
     # Fix for #2; prevents a ridiculous amount of varying size permutations.
-    regex = re.sub(r"\\s\*\(\?P<([^>]+)>\.\+\)", r"\s*(?P<\1>\S.*)", regex)
+    regex = re.sub(r"\\s\*\(\?P<([^>]+)>\.\+\)", r"\\s*(?P<\1>\\S.*)", regex)
     # Experimental fix for #18; removes unnecessary variable-size whitespace
     # matching, since we're stripping results anyway.
     regex = re.sub(r"\[ \]\*\(\?P<([^>]+)>\.\*\)", r"(?P<\1>.*)", regex)
@@ -698,7 +698,7 @@ else:
 
 
 def filter_characters(string, delete_characters):
-    return ''.join([char for char in string.encode('utf-8') if char not in delete_characters])
+    return ''.join([char for char in string if char not in delete_characters])
 
 
 def parse_raw_whois(raw_data, normalized=None, never_query_handles=True, handle_server=""):
@@ -1221,7 +1221,7 @@ def is_known_abbreviation(word):
 
 
 def has_country(line, country):
-    return country in line.encode('utf-8').lower()
+    return country in line.lower()
 
 
 def has_incorrect_known_abbreviation(line):

@@ -96,7 +96,7 @@ def get_whois_raw_wrapped(domain, server="", previous=None, rfc3490=True, never_
     # Ignore redirects from registries who publish the registrar data themselves
     if target_server not in ('whois.nic.xyz',):
         for line in [x.strip() for x in response.splitlines()]:
-            match = re.match("(refer|whois server|referral url|whois server|registrar whois):\s*([^\s]+\.[^\s]+)", line,
+            match = re.match("(refer|whois server|referral url|whois server|registrar whois|registrar whois server):\s*([^\s]+\.[^\s]+)", line,
                              re.IGNORECASE)
             if match is not None:
                 referal_server = match.group(2)
